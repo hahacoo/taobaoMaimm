@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "maimaimai",
+  "version": "1.0",
+  "description": "taobao抢单神器",
+  "icons": {
+    "16": "./resource/icon16.png",
+    "48": "./resource/icon48.png",
+    "128": "./resource/icon128.png"
+  },
+  "background": { "scripts": ["background.js"] },
+  "permissions": [
+    "tabs",
+    "notifications",
+    "alarms",
+    "https://*.tmall.com/*",
+    "https://*.taobao.com/*"
+  ],
+  "content_scripts": [{ 
+      "matches": ["https://cart.tmall.com/*", "https://cart.taobao.com/*"], 
+      "js": ["notice.js", "content_cart.js"] 
+    },
+    {
+      "matches": ["https://buy.tmall.com/*", "https://buy.taobao.com/*"], 
+      "js": ["content_buy.js"] 
+    }
+  ],
+  "page_action": {
+      "default_title": "maimaimai",
+      "default_icon": "./resource/icon16.png",
+      "default_popup": "popup.html"
+  }
+}
